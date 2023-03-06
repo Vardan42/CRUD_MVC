@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Product>
+<a asp-action="Create" asp-controller="Product" class="btn btn-secondary">Create</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Proice</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+               <tr>
+                <td>@item.Name</td>
+                <td>@item.Price.ToString("c")</td>
+                <td>@item.Description</td>
+                <td>
+                    <a asp-action="Edit" class="btn btn-secondary" asp-controller="Product" asp-route-id="@item.Id">Edit</a>
+                    <a asp-action="Delete" class="btn btn-danger" asp-controller="Product" asp-route-id="@item.Id">Delete</a>
+                </td>
+              </tr>
+            }
+        </tbody>
+    </table>
